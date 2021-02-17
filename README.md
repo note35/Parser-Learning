@@ -21,5 +21,4 @@ Secondly, before I started my study, there were only LL(1) parser and Operator P
 
 ## TODO(?)
 
-- [Low] Implement Operator Precedence parser (There're already examples from others in LeetCode discussion.)
 - [Low] Convert Packrat parser to PEG parser (This may be overkill for just five symbols grammar.)
