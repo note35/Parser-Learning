@@ -1,3 +1,4 @@
+from typing import *
 # https://leetcode.com/problems/basic-calculator-ii/discuss/1054545/Python-Packrat-Parser-(Backtracking-%2B-Memo)
 
 def t(f, *args):

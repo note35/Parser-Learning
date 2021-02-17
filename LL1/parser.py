@@ -1,3 +1,4 @@
+from typing import *
 # https://leetcode.com/problems/basic-calculator-ii/discuss/1022609/Python-Lexer-%2B-LL(1)-Parser-with-parsing-table
 
 class ParserLL1:

@@ -1,3 +1,4 @@
+from typing import *
 # https://leetcode.com/problems/basic-calculator-ii/discuss/1068095/Python-Lexer-%2B-LR(0)-Parser-with-DFA-and-parsing-table
 
 # (number of popped symb, derived symb)
