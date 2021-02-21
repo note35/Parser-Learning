@@ -34,13 +34,13 @@ class PackratParser:
 
     def pAdditive(self, idx) -> Tuple[int, int]:
         if idx in self.dp['dvAdditive']: return self.dp['dvAdditive'][idx]
-        
+
         vleft, nidx = self.pMultitive(idx)
         if self.E[nidx] == '$':
-            # Additive -> None
+            # Additive -> Multitive
             ret = vleft, nidx
         else:
-            # Additive -> +MultitiveAdditive | -MultitiveAdditive
+            # Additive -> Additive + Multitive | Additive - Multitive
             symb, nnidx = self.pChar(nidx)
             if symb == '+':
                 vright, nnnidx = self.pAdditive(nnidx)
@@ -59,10 +59,10 @@ class PackratParser:
 
         vleft, nidx = self.pDecimal(idx)
         if self.E[nidx] == '$':
-            # Multitive -> None
+            # Multitive -> Decimal
             ret = vleft, nidx
         else:
-            # Multitive -> *DecimalMultitive | /DecimalMultitive
+            # Multitive -> Multitive * Decimal | Multitive / Decimal
             symb, nnidx = self.pChar(nidx)
             if symb == '*':
                 vright, nnnidx = self.pMultitive(nnidx)
@@ -105,11 +105,12 @@ class PackratParser:
             num_pat = self.E[idx]
             idx += 1
             while idx < len(self.E) and self.E[idx] in '1234567890':
-                num_pat += self.E[idx]
+                num_pat = self.E[idx] + num_pat
                 idx += 1
-            return int(num_pat[::-1]), idx
+            return int(num_pat), idx
         else:
             raise ValueError('unable to parse input string by lexer')
+
 
 class Solution:        
     def calculate(self, s: str) -> int:
