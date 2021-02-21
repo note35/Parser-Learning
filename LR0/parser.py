@@ -33,7 +33,7 @@ class ParserLR0:
         self.E = E
         self.pos = 0
         self.states = [1]  # set initial state to 1
-        self.symbs = []  # Example value => [('N', 1), ('+', '+')]
+        self.symbs = []
         
     def symb2key(self, symb: str) -> str:
         # raw symb can only be either '+-*/' or 'N'
