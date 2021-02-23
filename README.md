@@ -19,7 +19,7 @@ Firstly, Leetcode contains many parsing related questions, **227. Basic Calculat
 
 Secondly, before I started my study, there were only LL(1) parser and Operator Precedence parser posts in discussion, LR(0), and Packrat parser were missing. Even if you search the related simple implementation in Google or other search engines, there's actually no organized work like this. (Implement all sorts of parsers for the same problem.)
 
-## TODO(?)
+## Unpromised TODO(?)
 
-- [Low] Convert Packrat parser to PEG parser (This may be overkill for just five symbols grammar.)
 - Add CST parser for LL(1)'s non-recursive parser
+- Write PEG parser from scratch 

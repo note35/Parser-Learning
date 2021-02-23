@@ -1,0 +1,15 @@
+@subheader """\
+
+"""
+
+start[int]: ret=additive { ret }
+additive[int]:
+    | lval=additive '+' rval=multitive { lval + rval }
+    | lval=additive '-' rval=multitive { lval - rval }
+    | multitive { multitive }
+multitive[int]:
+    | lval=multitive '*' rval=decimal { lval * rval }
+    | lval=multitive '/' rval=decimal { lval // rval }
+    | decimal { decimal }
+decimal[int]:
+    | NUMBER { int(number.string) }

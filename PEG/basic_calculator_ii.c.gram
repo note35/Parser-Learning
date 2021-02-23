@@ -1,0 +1,38 @@
+# PEG grammar for Python
+
+@trailer '''
+void *
+_PyPegen_parse(Parser *p)
+{
+    // Initialize keywords
+    p->keywords = reserved_keywords;
+    p->n_keyword_lists = n_keyword_lists;
+
+    // Run parser
+    void *result = NULL;
+    if (p->start_rule == Py_file_input) {
+        result = file_rule(p);
+    } else if (p->start_rule == Py_single_input) {
+        result = interactive_rule(p);
+    } else if (p->start_rule == Py_eval_input) {
+        result = eval_rule(p);
+    } else if (p->start_rule == Py_func_type_input) {
+        result = func_type_rule(p);
+    } else if (p->start_rule == Py_fstring_input) {
+        result = fstring_rule(p);
+    }
+
+    return result;
+}
+
+// The end
+'''
+file[mod_ty]: a=[sum] ENDMARKER { _PyPegen_make_module(p, a) }
+sum[expr_ty]:
+    | a=sum '+' b=term { _Py_BinOp(a, Add, b, EXTRA) }
+    | a=sum '-' b=term { _Py_BinOp(a, Sub, b, EXTRA) }
+    | term
+term[expr_ty]:
+    | a=term '*' b=NUMBER { _Py_BinOp(a, Mult, b, EXTRA) }
+    | a=term '/' b=NUMBER { _Py_BinOp(a, FloorDiv, b, EXTRA) }
+    | NUMBER
