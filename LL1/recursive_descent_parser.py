@@ -1,7 +1,7 @@
 from typing import *
 # https://leetcode.com/problems/basic-calculator-ii/discuss/1022609/Python-Lexer-%2B-LL(1)-Parser-with-parsing-table
 
-class ParserLL1:
+class RecursiveDescentParserLL1:
     def __init__(self, E: List[str]) -> None:
         self.E = E
         self.idx = 0
@@ -67,4 +67,4 @@ class Solution:
         return symbs
         
     def calculate(self, s: str) -> int:
-        return ParserLL1(self.lexer(s)).parse()
+        return RecursiveDescentParserLL1(self.lexer(s)).parse()
