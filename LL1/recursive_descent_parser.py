@@ -42,8 +42,6 @@ class RecursiveDescentParserLL1:
         self.idx += 1
         if type(cur_symb) == int:
             return cur_symb
-        if cur_symb == '-':
-            return -self.parse_F()
         raise ValueError('Invalid Expression')
 
 

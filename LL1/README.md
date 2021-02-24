@@ -14,7 +14,7 @@ E -> TE' | NUM | $
 E'-> None / +TE' / -TE' | +, -, None | $
 T -> FT' | NUM | +, -, $
 T'-> None / *FT' / /FT' | *, /, None | +, -, $
-F -> -F / NUM | -, NUM | +, -, *, /, $
+F -> NUM | NUM | +, -, *, /, $
 
 ## Parsing Table
 
